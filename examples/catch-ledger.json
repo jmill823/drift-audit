@@ -1,0 +1,29 @@
+[
+  {
+    "id": "CATCH-001",
+    "date": "2026-06-02",
+    "class": "doc-drift",
+    "claim": "CHANGELOG says v2.3 dropped the legacy XML export path",
+    "reality": "src/exporters/xml_legacy.py still ships and is imported by cli.py:42",
+    "receipt": "cli.py:42 @ commit 7f3a1c9",
+    "status": "open"
+  },
+  {
+    "id": "CATCH-002",
+    "date": "2026-06-10",
+    "class": "false-verification",
+    "claim": "test_retry_budget asserts the retry policy is enforced",
+    "reality": "the test only checks that a RetryPolicy object is instantiated; it never calls the code path or checks that a request actually retries or stops",
+    "receipt": "tests/test_retry.py:19 @ commit 4b9e2d0",
+    "status": "superseded-by:CATCH-003"
+  },
+  {
+    "id": "CATCH-003",
+    "date": "2026-06-11",
+    "class": "false-verification",
+    "claim": "Correction to CATCH-002: retry enforcement is now tested end-to-end",
+    "reality": "the added test still mocks the sleep() call and network layer; removing the retry cap in a scratch branch left the test passing, so the max=3 boundary is never exercised",
+    "receipt": "tests/test_retry.py:19-41 @ commit 9c0d115",
+    "status": "open"
+  }
+]
