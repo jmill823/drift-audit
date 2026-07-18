@@ -46,6 +46,8 @@ The audit ends with one line: `PASS` (no confirmed defects) or `CATCH(n)` follow
 
 drift-audit is the operational core of the [Structural Mistrust](https://jmill823.github.io/deltascanner-ai-pm/structural-mistrust-brief.html) eval framework — treat agent-delivered work as claims to be checked, not facts to be trusted.
 
+This repo runs its own skill — see [ops/catch-ledger.json](ops/catch-ledger.json) for the catches from its own build.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
