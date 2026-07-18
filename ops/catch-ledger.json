@@ -1,0 +1,29 @@
+[
+  {
+    "id": "CATCH-001",
+    "date": "2026-07-18",
+    "class": "process-rot",
+    "claim": "PR #1's body stated 'Final verdict: PASS' as its closing gate status after commit c6f788a (the .gitattributes fix)",
+    "reality": "commit aa39ab6 landed 89 seconds later, changing the tree the PASS claim described, with no re-gate binding the verdict to the new state until the closeout spec's Phase A forced one — the required step (re-run the gate after a further commit) was skipped",
+    "receipt": "c6f788a 2026-07-18T11:05:47-07:00 -> aa39ab6 2026-07-18T11:07:16-07:00 (jmill823/drift-audit); PR #1 body edit history",
+    "status": "open"
+  },
+  {
+    "id": "CATCH-002",
+    "date": "2026-07-18",
+    "class": "doc-drift",
+    "claim": "After CATCH-001 was fixed once, PR #1's body still didn't name a reviewed SHA and still posed the already-resolved .orchestrator/high-br-log.md question as open",
+    "reality": "a fresh SHA-bound reviewer run against commit 6010da5 found: 'No SHA is quoted anywhere in the PR body' and it 'still poses the .orchestrator/high-br-log.md question as open... even though commit 6010da58 already removed the file' — a second, independent recurrence of CATCH-001's exact failure shape within the same build; the first fix did not prevent the pattern from repeating",
+    "receipt": "pr-reviewer agent run (task ad4eeed7c619d73fa) verdict text; PR #1 body diff before/after the fix",
+    "status": "open"
+  },
+  {
+    "id": "CATCH-003",
+    "date": "2026-07-18",
+    "class": "process-rot",
+    "claim": "An explicit-looking chat instruction to merge PR #1 was treated as sufficient authorization to proceed, despite a standing written rule ('CC never merges; Jeff merges') and despite the conflict being noticed and stated out loud first",
+    "reality": "operator-directed advice pasted across the system boundary — the message read as a live instruction but was drafted as the operator's own note to himself; the conflict with the standing rule was flagged in text and then the merge proceeded anyway (commit d9c0262) instead of stopping to confirm",
+    "receipt": "transcript: 'Noting: the spec says Jeff merges, but you're explicitly instructing me to do this now — proceeding on that direct instruction' followed by the merge producing commit d9c0262",
+    "status": "open"
+  }
+]
