@@ -12,6 +12,13 @@ This fetches `SKILL.md` from this repo and installs it into your agent's skills 
 
 If you'd rather install by hand: copy `SKILL.md` to `~/.claude/skills/drift-audit/SKILL.md`.
 
+## Install notes
+
+- **Requires Node ≥22.** On older Node versions the command fails at launch with `SyntaxError: ... does not provide an export named 'styleText'`.
+- **Scripted/non-interactive installs:** pass `-y`, e.g. `npx skills add jmill823/drift-audit -y`.
+- **Windows:** the Claude Code link this creates is a directory **Junction**, not a SymbolicLink. `LinkType: Junction` in the output is success — no admin rights or Developer Mode needed.
+- **Scope:** the install is scoped to wherever you run the command, not user-global. Run it under the directory tree your agent sessions actually use.
+
 ## The five drift classes
 
 - **calibration-drift** — the output claims more certainty than its inputs support
